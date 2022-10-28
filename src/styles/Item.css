@@ -1,0 +1,8 @@
+#Inventory .inner .Item {
+  cursor: pointer;
+}
+
+#Inventory .inner .Item:hover {
+  background-color:#555;
+  margin: 0;
+}

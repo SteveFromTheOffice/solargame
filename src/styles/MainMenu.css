@@ -1,0 +1,44 @@
+.MainMenu {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  bottom: 0px;
+  width: 300px;
+
+  background-color: #000000DD;
+  box-shadow: 0 0 10px #000;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  font-family: monospace;
+  font-variant: small-caps;
+}
+
+.MainMenu h1 {
+  color: #FFF;
+  font-size: 32pt;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  padding: 50px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.MainMenu nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 50px;
+  user-select: none;
+}
+
+.MainMenu nav a {
+  color: white;
+  font-size: 24pt;
+  text-decoration: none;
+}
