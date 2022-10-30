@@ -1,62 +1,42 @@
-import React from 'react';
+import React, { useContext } from "react";
 
-import '../styles/Canvas.css';
+import { EventContext } from "../contexts/EventContext";
 
-export default class Canvas extends React.Component {
+import "../styles/Canvas.css";
 
-    constructor(props) {
-        super(props);
+function Canvas(props) {
+  const eventEmitter = useContext(EventContext);
 
-        this.state = {
-            height : 100,
-            width  : 100
-        };
-
+  function handleClick(e) {
+    if (e.type === "click") {
+      e.preventDefault();
+      eventEmitter.emit("LeftClick", e);
     }
 
-    componentDidMount() {
-        window.addEventListener("resize", this.handleResize.bind(this));
+    if (e.type === "contextmenu") {
+      e.preventDefault();
+      eventEmitter.emit("RightClick", e);
     }
-    
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.handleResize.bind(this));
-    }
+  }
 
-    handleClick(e) {
-
-        if(e.type == "click") {
-            this.handleLeftClick(e);
-        }
-
-        if(e.type == "contextmenu") {
-            e.preventDefault();
-            this.handleRightClick(e);
-        }
-    }
-
-    handleLeftClick(e) {
-        console.log("M1");
-    }
-
-    handleRightClick(e) {
-        console.log("M2");
-    }
-
-    handleResize(e) {
-        
-        // Rescale the canvas pixels to match every time the client window changes.
-        this.setState({
-            width  : window.innerWidth,
-            height : window.innerHeight
-        });
-
-    }
-  
-    render() {
-
-        return (
-            <canvas onClick={this.handleClick.bind(this)} onContextMenu={this.handleClick.bind(this)}></canvas>
-        );
-    }
-
+  return <canvas onClick={handleClick} onContextMenu={handleClick}></canvas>;
 }
+
+export default Canvas;
+// componentDidMount() {
+//     window.addEventListener("resize", this.handleResize.bind(this));
+// }
+
+// componentWillUnmount() {
+//     window.removeEventListener("resize", this.handleResize.bind(this));
+// }
+
+// handleResize(e) {
+
+//     // Rescale the canvas pixels to match every time the client window changes.
+//     this.setState({
+//         width  : window.innerWidth,
+//         height : window.innerHeight
+//     });
+
+// }

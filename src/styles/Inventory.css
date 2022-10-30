@@ -1,4 +1,4 @@
-#Inventory {
+.Inventory {
   position: absolute;
   top: 0;
   left: 0;
@@ -8,22 +8,22 @@
   background-color: #333;
   border: solid 1px #000;
   border-radius: 2px;
-  padding:10px;
+  padding: 10px;
 
   font-family: monospace;
   color: white;
-  
+
   cursor: move;
   user-select: none;
 }
 
-#Inventory .header {
+.Inventory .header {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
   pointer-events: none;
 }
-#Inventory .header button {
+.Inventory .header button {
   border: none;
   background-color: #0000;
   color: white;
@@ -32,7 +32,7 @@
   pointer-events: all;
 }
 
-#Inventory .inner {
+.Inventory .inner {
   background-color: #222;
   margin-top: 10px;
   padding: 10px;

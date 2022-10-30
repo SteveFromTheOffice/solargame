@@ -1,145 +1,76 @@
-import React from 'react';
-import Item from './Item';
-import '../styles/Inventory.css';
+import React, { useState, useContext } from "react";
+import Item from "./Item";
 
-export default class Inventory extends React.Component {
+import { EventContext } from "../contexts/EventContext";
 
-    constructor(props) {
-      super(props);
+import "../styles/Inventory.css";
 
-      this.state = {
-        isDragging: false,
-        display: "revert",
-        x: 0,
-        y: 0
+function Inventory(props) {
+  const [dragging, setDragging] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [visible, setVisible] = useState(false);
+
+  const eventEmitter = useContext(EventContext);
+
+  function close() {
+    setVisible(false);
+  }
+
+  function handleMouseDown(e) {
+    setDragging(true);
+  }
+
+  function handleMouseMove(e) {
+    if (!dragging) return;
+
+    setPosition((oldPosition) => {
+      return {
+        x: oldPosition.x + e.movementX,
+        y: oldPosition.y + e.movementY,
       };
-    }
-  
-    render() {
-        return (
-          <div className="Inventory" style={{ left: this.state.x, top: this.state.y, display: this.state.display }}>
-            <div className='header'>
-              <div>Inventory</div>
-              <div></div>
-              <button className='close'>X</button>
-            </div>
-            <div class='inner'>
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-              <Item />
-            </div>
-          </div>
-        );
-    }
+    });
+  }
 
-    handleClose(event) {
+  function handleMouseUp(e) {
+    setDragging(false);
+  }
 
-      // Don't start inventory dragging if we didn't click the Inventory.
-      if( event.target.id !== "InventoryClose")
-        return;
-        
-      event.stopPropagation();
+  function open() {
+    setVisible(true);
+  }
 
-      this.setState({
-        display: "none"
-      });
+  function toggleVisibility() {
+    setVisible(!visible);
+  }
 
-    }
+  eventEmitter.on("ToggleInventory", (e) => {
+    toggleVisibility();
+  });
 
-    toggle() {
-
-      if( this.state.display == "none" )
-        this.setState({
-          display: "revert"
-        });
-      
-      else
-        this.setState({
-          display: "none"
-        });
-    }
-
-    handleMouseDown(event) {
-
-      // Don't start inventory dragging if we didn't click the Inventory.
-      if( event.target.id !== "Inventory")
-        return;
-        
-      event.stopPropagation();
-
-      this.setState({
-        isDragging: true
-      });
-
-    }
-
-    handleMouseUp(event) {
-
-      this.setState({
-        isDragging: false
-      });
-
-    }
-
-    handleMouseMove(event) {
-
-      // Don't move the inventory if we aren't dragging.
-      if( !this.state.isDragging )
-        return;
-
-      event.stopPropagation();
-      
-      this.setState({
-        x: this.state.x + event.movementX,
-        y: this.state.y + event.movementY
-      });
-
-    }
-
-    componentDidMount() {
-
-      // Drag.
-      window.addEventListener("mousedown", this.handleMouseDown.bind(this));
-      window.addEventListener("mouseup", this.handleMouseUp.bind(this));
-      window.addEventListener("mousemove", this.handleMouseMove.bind(this));
-
-      // Close Button.
-      window.addEventListener("click", this.handleClose.bind(this));
-    }
-  
-    componentWillUnmount() {
-
-      // Drag.
-      window.removeEventListener("mousedown", this.handleMouseDown.bind(this));
-      window.removeEventListener("mouseup", this.handleMouseUp.bind(this));
-      window.removeEventListener("mousemove", this.handleMouseMove.bind(this));
-
-      // Close Button.
-      window.removeEventListener("click", this.handleClose.bind(this));
-    }
-
+  return (
+    <div
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      className="Inventory"
+      style={{
+        left: position.x,
+        top: position.y,
+        display: visible ? "revert" : "none",
+      }}
+    >
+      <div className="header">
+        <div>Inventory</div>
+        <div></div>
+        <button className="close" onClick={close}>
+          X
+        </button>
+      </div>
+      <div className="inner">
+        <Item />
+      </div>
+    </div>
+  );
 }
+
+export default Inventory;

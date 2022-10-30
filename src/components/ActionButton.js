@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useContext } from "react";
+
+import { EventContext } from "../contexts/EventContext";
 
 import "../styles/ActionButton.css";
 
-export default class ActionButton extends React.Component {
-  
-    constructor(props) {
-        super(props);
-    }
+function ActionButton(props) {
+  const eventEmitter = useContext(EventContext);
 
-    render() {
+  function handleClick(e) {
+    eventEmitter.emit("ActionButtonPressed", { name: props.name });
+  }
 
-        return (
-            <div onClick={this.props.onClick} className="ActionButton">
-                <label>{this.props.button.toUpperCase()}</label>
-            </div>
-        );
-    }
-
+  return (
+    <div
+      onClick={handleClick}
+      className="ActionButton"
+      style={{ backgroundImage: `url(${props.icon})` }}
+    >
+      <label>{props.button.toUpperCase()}</label>
+    </div>
+  );
 }
+
+export default ActionButton;
