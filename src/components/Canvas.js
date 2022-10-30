@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { EventContext } from "../contexts/EventContext";
 
 import "../styles/Canvas.css";
 
 function Canvas(props) {
-  const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
-  const [focused, setFocused] = useState(true);
+  //const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
+  //const [focused, setFocused] = useState(true);
   const eventEmitter = useContext(EventContext);
 
   function handleClick(e) {
@@ -23,13 +23,14 @@ function Canvas(props) {
     eventEmitter.emit("Mouse", e);
   }
 
-  function focus() {
-    setFocused(true);
-  }
+  // function focus() {
+  //   setFocused(true);
+  // }
 
+  console.log("Rendered!");
   return (
     <canvas
-      tabIndex={focused ? 0 : 1}
+      tabIndex={0}
       onKeyDown={handleKeyPress}
       onClick={handleClick}
       onContextMenu={handleClick}
