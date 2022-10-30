@@ -6,7 +6,6 @@ import { EventContext } from "../contexts/EventContext";
 import "../styles/Inventory.css";
 
 function Inventory(props) {
-  const [dragging, setDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [visible, setVisible] = useState(false);
 
@@ -17,12 +16,11 @@ function Inventory(props) {
   }
 
   function handleMouseDown(e) {
-    setDragging(true);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
   }
 
   function handleMouseMove(e) {
-    if (!dragging) return;
-
     setPosition((oldPosition) => {
       return {
         x: oldPosition.x + e.movementX,
@@ -32,12 +30,13 @@ function Inventory(props) {
   }
 
   function handleMouseUp(e) {
-    setDragging(false);
+    window.removeEventListener("mousemove", handleMouseMove);
+    window.removeEventListener("mouseup", handleMouseUp);
   }
 
-  function open() {
-    setVisible(true);
-  }
+  // function open() {
+  //   setVisible(true);
+  // }
 
   function toggleVisibility() {
     setVisible(!visible);
@@ -50,8 +49,6 @@ function Inventory(props) {
   return (
     <div
       onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
       className="Inventory"
       style={{
         left: position.x,
