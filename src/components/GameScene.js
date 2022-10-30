@@ -11,7 +11,7 @@ function GameScene(props) {
     <div className="GameScene">
       <Canvas />
       <UserInterface />
-      <MainMenu isVisible={false} />
+      <MainMenu visible={false} />
     </div>
   );
 }

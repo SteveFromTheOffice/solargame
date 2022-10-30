@@ -6,7 +6,7 @@ function TitleScene(props) {
   return (
     <>
       <Splash />
-      <MainMenu isVisible />
+      <MainMenu visible={true} />
     </>
   );
 }
