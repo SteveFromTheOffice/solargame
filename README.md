@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Solar Game Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Websocket server here (eventually)
+Renderer here (eventually)
 
-## Available Scripts
+<br>
+<br>
 
-In the project directory, you can run:
+# Commands
 
-### `npm start`
+- `npm start`
+  Start development server.
+  <br>
+- `npm test`
+  Run \*.test.js files via Jest.
+  <br>
+- `npm run build`
+  Minimize/build a deployment version.
+  <br>
+- `npm run eject`
+  Removes the training wheels and gives you config access to bootstrap tools. (Lets try not to use this if we can help it)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Features / TODO
 
-### `npm test`
+### **_[DONE] : Functional components, core design_**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Easier to use than classes, more features, cleaner code, easy context, easy hooks, more modern. Almost a requirement.
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **_[DONE] : EventContext w/ Context API_**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A low footprint event manager to allow communication between UI components. The game client needs minimal interactivity between buttons to toggle visibility or send action intent to the server. These async event dispatches provide a secure way to interact while keeping the components compartmentalized.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `npm run eject`
+### **_[TODO] : FocusContext_**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+UI design for games requires a certain orchestration of what buttons do in certain circumstances. Are we focused on the game client? Are other windows open? Should we be chatting instead of moving left? When do we want to actually accept specific inputs? Centralizing this context will remove a lot of headache.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### **_[TODO] : WebGL / Canvas Renderer_**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This will be an insanely complex aspect. Likely will start with some boilerplate cubes and squares.
 
-## Learn More
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **_[TODO] : WebSocket Client_**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Server <--> Client communication, player authentication, game data, the usual. Not much to say here.
 
-### Code Splitting
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### **_[TODO] : WebGL / Canvas Splash screen "Peeker"_**
 
-### Analyzing the Bundle Size
+A minimal version of the Game canvas that renders intriquing scenes from the game. (Builds by top scoring players, random planet environments, etc.)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br>
 
-### Making a Progressive Web App
+### **_TODO : Finishing styles and GUI components_**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Touch up and polish.
