@@ -9,6 +9,8 @@ import UserInterface from "./components/UserInterface";
 
 import EventContext from "./contexts/EventContext";
 
+import "./styles/App.css";
+
 const eventEmitter = new EventEmitter();
 
 eventEmitter.on("ActionButtonPressed", (e) => {
