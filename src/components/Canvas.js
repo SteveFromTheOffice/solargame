@@ -8,7 +8,6 @@ import "../styles/Canvas.css";
 
 function Canvas(props) {
   const dispatch = useDispatch();
-  //const isFocused = useSelector((state) => state.sceneManager.focusTarget == "Canvas");
   const isVisible = useSelector((state) => state.sceneManager.isVisible["Canvas"]);
   const eventEmitter = useContext(EventContext);
 
@@ -25,7 +24,7 @@ function Canvas(props) {
   }
 
   function handleKeyPress(e) {
-    if (e.key == "Escape") {
+    if (e.key === "Escape") {
       dispatch(sceneActions.setVisibility({ scene: "MainMenu", visible: true }));
       return;
     }
