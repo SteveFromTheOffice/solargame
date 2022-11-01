@@ -5,7 +5,7 @@
   bottom: 0px;
   width: 300px;
 
-  background-color: #000000DD;
+  background-color: #000000dd;
   box-shadow: 0 0 10px #000;
 
   display: flex;
@@ -17,7 +17,7 @@
 }
 
 .MainMenu h1 {
-  color: #FFF;
+  color: #fff;
   font-size: 32pt;
   display: flex;
   justify-content: center;
@@ -37,8 +37,15 @@
   user-select: none;
 }
 
-.MainMenu nav a {
-  color: white;
-  font-size: 24pt;
+.MainMenu nav button {
+  background: none;
+  border: none;
+  color: #ffffff66;
+  cursor: pointer;
+  font-size: 16pt;
   text-decoration: none;
+}
+
+.MainMenu nav button:hover {
+  color: #fff;
 }

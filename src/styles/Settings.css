@@ -1,0 +1,38 @@
+.Settings {
+  background-color: #000000dd;
+  padding: 50px 100px;
+
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  bottom: 0px;
+  right: 0px;
+
+  flex-direction: column;
+
+  font-family: monospace;
+  font-variant: small-caps;
+}
+
+.Settings h1 {
+  color: #fff;
+  font-size: 32pt;
+  display: flex;
+  margin: 0px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.Settings .grow {
+  flex-grow: 1;
+}
+
+.Settings button {
+  display: flex;
+  background: none;
+  border: none;
+  color: #ffffff66;
+  cursor: pointer;
+  font-size: 16pt;
+  text-decoration: none;
+}
